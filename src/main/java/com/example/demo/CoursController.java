@@ -8,21 +8,21 @@ public class CoursController {
 
     @GetMapping("/cours")
     public String showcours(Model model) {
-        // Sport内容
+        // contenu Sport
         String[] sports = {"Danses", "Arts martiaux", "Fitness", "Natation", "Sports d'équipes"};
 
-        // Culture内容
+        // contenu Culture
         String[] cultures = {"Dessin", "Musique", "Photographie"};
 
-        // Artisanat内容
+        // contenu Artisanat
         String[] artisanats = {"Couture", "Broderie", "Création de jeux vidéos"};
 
-        // 将数据添加到模型中
+        // ajouter donne dans model
         model.addAttribute("sports", sports);
         model.addAttribute("cultures", cultures);
         model.addAttribute("artisanats", artisanats);
 
-        // 返回显示的HTML页面
+        // returne dans page htmlS
         return "cours";
     }
 }
