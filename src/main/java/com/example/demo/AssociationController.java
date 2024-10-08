@@ -10,7 +10,7 @@ public class AssociationController {
 
     @GetMapping("/association")
     public String index() {
-        return "<h1>93Moove est une association loi 1901 opérant dans l'ensemble du département\n" +
+        return "93Moove est une association loi 1901 opérant dans l'ensemble du département\n" +
                 "93. Leur but est non-lucratif, et est de permettre aux citoyens et citoyennes du\n" +
                 "département d'accéder à des activités sportives, manuelles ou culturelles.\n" +
                 "93Moove\n" +
@@ -59,7 +59,7 @@ public class AssociationController {
                 "quotient\n" +
                 "familial\n" +
                 "des\n" +
-                "adhérent.es, présent sur leur déclaration de revenus aux impôts.</h1>" +
+                "adhérent.es, présent sur leur déclaration de revenus aux impôts." +
                 "<a href=\"/cours\">transfere cours</a>" ;
 
     }
