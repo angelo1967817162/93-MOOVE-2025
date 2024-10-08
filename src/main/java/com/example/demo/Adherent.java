@@ -1,10 +1,10 @@
 package com.example.demo;
 
-public class Connexion {
+public class Adherent {
     public String Utilisateur;
     public String motDePasse;
 
-    public Connexion(String Connexiono,String motDePasse){
+    public Adherent(String Connexiono, String motDePasse){
         this.Utilisateur = Utilisateur;
         this.motDePasse =motDePasse;
     }
