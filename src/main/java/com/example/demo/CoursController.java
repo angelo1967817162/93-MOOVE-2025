@@ -87,9 +87,9 @@ public class CoursController {
         //faire un foreach sur listeTatoueurs
         //Pour chaque Tatoueur dans chaque case, vérifiez si getId==id
         // si oui, retrouver le tatoueur
-        for (Cours t: this.listeCours){
-            if(t.getSport()== t.Sport){
-                return t;
+        for (Cours c: this.listeCours){
+            if(c.getSport()== c.Sport){
+                return c;
             }
         }
         return null;
