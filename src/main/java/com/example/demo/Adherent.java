@@ -1,35 +1,34 @@
 package com.example.demo;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Entity
 public class Adherent {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
-    private String name;
+    private String nom;
     private String email;
-    private String password;
+    private String mot_de_passe;
 
     @Override
     public String toString() {
         return "{" +
                 " id='" + getId() + "'" +
-                ", name='" + getName() + "'" +
+                ", nom='" + getNom() + "'" +
                 ", email='" + getEmail() + "'" +
-                ", password='" + getPassword() + "'" +
+                ", mot_de_passe='" + getMot_de_passe() + "'" +
                 "}";
     }
 
-    public String getPassword() {
-        return this.password;
+    public String getMot_de_passe() {
+        return this.mot_de_passe;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setMot_de_passe(String mot_de_passe) {
+        this.mot_de_passe = mot_de_passe;
     }
 
     public Integer getId() {
@@ -40,12 +39,12 @@ public class Adherent {
         this.id = id;
     }
 
-    public String getName() {
-        return this.name;
+    public String getNom() {
+        return this.nom;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
     public String getEmail() {
