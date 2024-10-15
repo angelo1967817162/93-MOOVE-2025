@@ -9,17 +9,18 @@ import java.util.List;
 
 public class ProfesseurController {
     @Autowired
-    private ProfesseurRepository professeurRepository;
+    private com.example.demo.repository.ProfesseurRepository professeurRepository;
 
-    @GetMapping("/adherent")
+    @GetMapping("/professeur")
     public List<Professeur> professeur(){
-        return this.professeurRepository.findAll();;
+        return this.professeurRepository.findAll();
     }
 
     @PostMapping("/professeur")
     public void ajouterprofesseur(@RequestBody Adherent nouveauAdherent){
 //partie à écrire
-        ListeProfesseur.add(nouveauAdherent);
+       // ListeProfesseur.add(nouveauAdherent);
+
     }
 
 }
