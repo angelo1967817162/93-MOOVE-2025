@@ -16,7 +16,7 @@ public class ProfesseurController {
         return this.professeurRepository.findAll();
     }
 
-    @PostMapping("/professeur")
+   // @PostMapping("/professeur")
     public void ajouterprofesseur(@RequestBody Adherent nouveauAdherent){
 //partie à écrire
        // ListeProfesseur.add(nouveauAdherent);
