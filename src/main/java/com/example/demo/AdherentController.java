@@ -23,8 +23,18 @@ public class AdherentController {
     @PostMapping("/adherent")
     public void ajouterAdherent(@RequestBody Adherent nouveauAdherent){
 //partie à écrire
-        ListeAdherent.add(nouveauAdherent);
+        //ListeAdherent.add(nouveauAdherent);
+        this.professeurRepository.save();
+
+
+
+
+
+
     }
+
+
+
 
 
 
