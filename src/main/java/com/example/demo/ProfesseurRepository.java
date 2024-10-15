@@ -8,8 +8,8 @@ import java.util.List;
 
 @Repository
 public interface ProfesseurRepository extends JpaRepository<Professeur,Integer> {
-    List<Professeur> findByStyle(String style);
+  //  List<Professeur> findByStyle(String style);
 
 
-    void save();
+    //void save();
 }

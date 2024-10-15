@@ -17,8 +17,8 @@ public class ProfesseurController {
     }
 
     @PostMapping("/professeur")
-    public void ajouterprofesseur(@RequestBody Adherent nouveauProfesseur){
-        this.professeurRepository.save();
+    public void ajouterprofesseur(@RequestBody Professeur nouveauProfesseur){
+        this.professeurRepository.save(nouveauProfesseur);
 //partie à écrire
        // ListeProfesseur.add(nouveauAdherent);
 
