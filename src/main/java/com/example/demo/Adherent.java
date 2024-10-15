@@ -1,20 +1,27 @@
 package com.example.demo;
 
 public class Adherent {
+    public int Id;
     public String Utilisateur;
-    public String motDePasse;
+    public String MotDePasse;
 
-    public Adherent(String Connexiono, String motDePasse){
+    public Adherent( int Id, String Utilisateur, String motDePasse){
+        this.Id = Id;
         this.Utilisateur = Utilisateur;
-        this.motDePasse =motDePasse;
+        this.MotDePasse =motDePasse;
     }
 
-
-    public String getUtilisateur() {
+    public int getId()
+    {
+        return Id;
+    }
+    public String getUtilisateur()
+    {
         return Utilisateur;
     }
-    public String getmotDePasse(){
-        return motDePasse;
+    public String getMotDePasse(){
+        
+        return MotDePasse;
     }
 
 
