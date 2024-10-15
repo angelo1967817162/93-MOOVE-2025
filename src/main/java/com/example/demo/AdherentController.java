@@ -24,7 +24,7 @@ public class AdherentController {
     public void ajouterAdherent(@RequestBody Adherent nouveauAdherent){
 //partie à écrire
         //ListeAdherent.add(nouveauAdherent);
-        this.professeurRepository.save();
+        this.adherentRepository.save();
 
 
 
