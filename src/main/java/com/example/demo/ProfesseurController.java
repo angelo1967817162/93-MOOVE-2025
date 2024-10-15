@@ -9,7 +9,7 @@ import java.util.List;
 
 public class ProfesseurController {
     @Autowired
-    private com.example.demo.repository.ProfesseurRepository professeurRepository;
+    private com.example.demo.ProfesseurRepository professeurRepository;
 
     @GetMapping("/professeur")
     public List<Professeur> professeur(){
