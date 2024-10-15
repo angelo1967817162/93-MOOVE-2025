@@ -17,7 +17,7 @@ public class AdherentController {
 
     @GetMapping("/adherent")
     public List<Adherent> adherent(){
-        return this.adherentRepository.findAll();;
+        return (List<Adherent>) this.adherentRepository.findAll();
     }
 
     @PostMapping("/adherent")
