@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.controller;
 /*import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -57,7 +57,7 @@ public class CoursController {
     }
 
 }*/
-import com.sun.management.UnixOperatingSystemMXBean;
+import com.example.demo.model.Cours;
 import org.springframework.web.bind.annotation.*;
 
 //import java.util.Arrays;
