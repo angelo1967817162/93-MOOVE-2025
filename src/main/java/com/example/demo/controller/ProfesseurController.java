@@ -1,8 +1,11 @@
 package com.example.demo.controller;
 
+import com.example.demo.model.Cours;
 import com.example.demo.model.Professeur;
 import com.example.demo.repository.ProfesseurRepository;
+import com.example.demo.service.ProfesseurService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,7 +27,5 @@ public class ProfesseurController {
 //partie à écrire
        // ListeProfesseur.add(nouveauAdherent);
     }
-
-
 
 }
