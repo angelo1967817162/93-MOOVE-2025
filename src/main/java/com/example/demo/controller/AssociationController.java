@@ -61,7 +61,7 @@ public class AssociationController {
 
     }
 
-    // 处理页面的请求
+
    /* @GetMapping("/cours")
     public String cours() {
         return "<h1>bonjour</h1>" +
@@ -69,7 +69,8 @@ public class AssociationController {
                 "<br><a href=\"/association\">transfere association</a>";
     }*/
 
-    // 处理新页面的请求
+
+
    /* @GetMapping("/association")
     public String association() {
         return

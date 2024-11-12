@@ -24,5 +24,3 @@ public class Cours{
         return Artisanat;
     }
 }
-
-
