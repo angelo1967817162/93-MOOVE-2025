@@ -1,56 +1,38 @@
 package com.example.demo.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
 public class Professeur {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    private String nom;
-    private String email;
-    private String MotDePasse;
+    private String name;
 
-    public Professeur() {
+    // Constructors, getters, and setters
+    public Professeur() {}
+
+    public Professeur(String name) {
+        this.name = name;
     }
 
     public Integer getId() {
-
         return id;
     }
 
     public void setId(Integer id) {
-
         this.id = id;
     }
 
-    public String getNom() {
-
-        return nom;
+    public String getName() {
+        return name;
     }
 
-    public void setNom(String nom) {
-
-        this.nom = nom;
-    }
-
-    public String getEmail() {
-
-        return email;
-    }
-
-    public void setEmail(String email) {
-
-        this.email = email;
-    }
-
-    public String getMotDePasse() {
-
-        return MotDePasse;
-    }
-
-    public void setMotDePasse(String motDePasse) {
-
-        MotDePasse = motDePasse;
+    public void setName(String name) {
+        this.name = name;
     }
 }
+

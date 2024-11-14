@@ -1,29 +1,47 @@
 package com.example.demo.controller;
 
+import com.example.demo.model.Cours;
 import com.example.demo.model.Professeur;
-import com.example.demo.repository.ProfesseurRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
+@RestController
+@RequestMapping("/professeurs")
 public class ProfesseurController {
-    @Autowired
-    private ProfesseurRepository professeurRepository;
+    private List<Professeur> listeProfesseurs = new ArrayList<>();
+    private List<Cours> listeCours = new ArrayList<>();
 
-    @GetMapping("/professeur")
-    public List<Professeur> professeur(){
-        return this.professeurRepository.findAll();
+
+    @PostMapping
+    public Professeur ajouterProfesseur(@RequestBody Professeur professeur) {
+        listeProfesseurs.add(professeur);
+        return professeur;
     }
 
-    @PostMapping("/professeur")
-    public void ajouterprofesseur(@RequestBody Professeur nouveauProfesseur){
-        this.professeurRepository.save(nouveauProfesseur);
-//partie à écrire
-       // ListeProfesseur.add(nouveauAdherent);
 
+    @GetMapping
+    public List<Professeur> getListeProfesseurs() {
+        return listeProfesseurs;
     }
 
+
+    @PostMapping("/{professeurId}/cours")
+    public Cours ajouterCours(@PathVariable Integer professeurId, @RequestBody Cours cours) {
+
+        for (Professeur professeur : listeProfesseurs) {
+            if (professeur.getId().equals(professeurId)) {
+                listeCours.add(cours);
+                return cours;
+            }
+        }
+        return null;
+    }
+
+
+    @GetMapping("/cours")
+    public List<Cours> getListeCours() {
+        return listeCours;
+    }
 }
