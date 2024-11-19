@@ -58,52 +58,74 @@ public class CoursController {
 
 }*/
 import com.example.demo.model.Cours;
+import com.example.demo.repository.AdherentRepository;
+import com.example.demo.repository.CoursRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.yaml.snakeyaml.events.Event;
 
 //import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
 
 @RestController
+@RequestMapping("/cours")
 public class CoursController {
-    private List<Cours> listeCours = new ArrayList<>();
+    @Autowired
+    private CoursRepository coursRepository;
 
 
-    @PostMapping("/cours")
-    public List<Cours> ajouterCours(@RequestBody Cours nouveauCours){
-        this.listeCours.add(nouveauCours);
-        return listeCours;
+    @PostMapping
+    public Cours createCours(@RequestBody Cours nouveauCours) {
+        return coursRepository.save(nouveauCours);
     }
 
     @GetMapping("/cours")
-    public List<Cours> getListeCours() {
-        return this.listeCours;
+    public List<Cours> getAllCours() {
+        return this.coursRepository.findAll();
     }
 
-    @GetMapping("/cours/{Sport}")
-    public Cours afficherCours(@PathVariable String Sport) {
-//Cherchez le tatoueur ou la tatoueuse dans votre liste et retourner l’objet trouvé.
-        //faire un foreach sur listeTatoueurs
-        //Pour chaque Tatoueur dans chaque case, vérifiez si getId==id
-        // si oui, retrouver le tatoueur
-        for (Cours c: this.listeCours){
-            if(c.getSport()== c.Sport){
-                return c;
-            }
-        }
-        return null;
+    @GetMapping("/{sport}")
+    public Cours getCoursBySport(@PathVariable String sport) {
+        return coursRepository.findBySport(sport);
     }
 
-    @PutMapping("/cours/{Sport}")
-    public void modifierCours(@RequestBody Cours cours, @PathVariable String Sport) {
-        //parourir la liste, utiliser la fonction set
-        for (int i = 0; i < this.listeCours.size(); i++) {
-            if (this.listeCours.get(i).getSport() == Sport) {
-                this.listeCours.set(i, cours);
-            }
-        }
+//    @GetMapping("/cours/{Sport}")
+//    public Cours afficherCours(@PathVariable String Sport) {
+////Cherchez le tatoueur ou la tatoueuse dans votre liste et retourner l’objet trouvé.
+//        //faire un foreach sur listeTatoueurs
+//        //Pour chaque Tatoueur dans chaque case, vérifiez si getId==id
+//        // si oui, retrouver le tatoueur
+//        for (Cours c : this.coursRepository.findAll()) {
+//            if (c.getSport() == c.Sport) {
+//                return c;
+//            }
+//        }
+//        return null;
+//    }
+
+    @PutMapping("/{id}")
+    public Cours updateCours(@PathVariable Long id, @RequestBody Cours updatedCours) {
+        return coursRepository.findById(id)
+                .map(cours -> {
+                    cours.setSport(updatedCours.getSport());
+                    cours.setCulture(updatedCours.getCulture());
+                    cours.setArtisanat(updatedCours.getArtisanat());
+                    return coursRepository.save(cours);
+                })
+                .orElseThrow(() -> new RuntimeException("Cours not found with id " + id));
+    }
+//    @PutMapping("/{id}")
+//    public void modifierCours(@RequestBody Cours cours, @PathVariable String Sport) {
+//        //parourir la liste, utiliser la fonction set
+//        for (int i = 0; i < this.coursRepository.findBy(id); i++) {
+//            if (this.coursRepository.get(i).getSport() == Sport) {
+//                this.coursRepository.set(i, cours);
+//            }
+//        }
 // autre manière de faire le @PutMapping
        /* for(Tatoueur t : this.listeTatoueurs){
             if(t.getId()==id){
@@ -112,22 +134,11 @@ public class CoursController {
             }
         }
         */
-    }
-    @DeleteMapping("/cours/{Sport}")
-    public void supprimerCours(@PathVariable String Sport) {
-        for (int i = 0; i < this.listeCours.size(); i++) {
-            if (this.listeCours.get(i).getSport() == Sport) {
-                this.listeCours.remove(i);
-            }
 
-        }
-    }
 
-    @DeleteMapping("/cours")
+    @DeleteMapping("/id")
     public void supprimerCours() {
-        //Supprime tout
-        //liste.
-        this.listeCours.clear();
-    }
+        coursRepository.delete(id);
 
+    }
 }

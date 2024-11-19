@@ -16,7 +16,7 @@ public class AdherentController {
     private AdherentRepository adherentRepository;
 
 
-    @GetMapping("/ad")
+    @GetMapping("/adherent")
     public List<Adherent> getAllAdherents() {
         return (List<Adherent>) adherentRepository.findAll();
     }
