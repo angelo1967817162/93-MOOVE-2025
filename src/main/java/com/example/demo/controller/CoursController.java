@@ -70,6 +70,7 @@ import java.util.List;
 public class CoursController {
     private List<Cours> listeCours = new ArrayList<>();
 
+
     @PostMapping("/cours")
     public List<Cours> ajouterCours(@RequestBody Cours nouveauCours){
         this.listeCours.add(nouveauCours);
