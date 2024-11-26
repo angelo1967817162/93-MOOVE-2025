@@ -9,44 +9,40 @@ import jakarta.persistence.Id;
 public class Cours {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public String Sport;
-    public String Culture;
-    public String Artisanat;
+    private Integer id;
+    public String nom;
+    public String description;
 
-    public Cours(String Sport,String Culture,String Artisanat){
-        this.Sport = Sport;
-        this.Culture =Culture;
-        this.Artisanat = Artisanat;
-
+    public Cours(Integer id, String nom, String description) {
+        this.id = id;
+        this.nom = nom;
+        this.description = description;
     }
 
     public Cours() {
     }
 
-
-
-    public void setSport(String sport) {
-        Sport = sport;
+    public String getNom() {
+        return nom;
     }
 
-    public void setCulture(String culture) {
-        Culture = culture;
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
-    public void setArtisanat(String artisanat) {
-        Artisanat = artisanat;
+    public String getDescription() {
+        return description;
     }
 
-    public String getSport() {
-
-        return Sport;
-    }
-    public String getCulture(){
-
-        return Culture;
-    }
-    public String getArtisanat(){
-        return Artisanat;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 }

@@ -58,15 +58,13 @@ public class CoursController {
 
 }*/
 import com.example.demo.model.Cours;
-import com.example.demo.repository.AdherentRepository;
 import com.example.demo.repository.CoursRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.yaml.snakeyaml.events.Event;
 
 //import java.util.Arrays;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
@@ -88,10 +86,11 @@ public class CoursController {
         return this.coursRepository.findAll();
     }
 
-  /*  @GetMapping("/{sport}")
-    public Cours getCoursBySport(@PathVariable String sport) {
-        return coursRepository.findBySport(sport);
-    }*/
+
+//  @GetMapping("/{id}")
+//    public Optional<Cours> getId(@PathVariable Integer id) {
+//        return this.coursRepository.findById(id);
+//    }
 
 //    @GetMapping("/cours/{Sport}")
 //    public Cours afficherCours(@PathVariable String Sport) {
@@ -111,9 +110,8 @@ public class CoursController {
     public Cours updateCours(@PathVariable Integer id, @RequestBody Cours updatedCours) {
         return coursRepository.findById(id)
                 .map(cours -> {
-                    cours.setSport(updatedCours.getSport());
-                    cours.setCulture(updatedCours.getCulture());
-                    cours.setArtisanat(updatedCours.getArtisanat());
+                    cours.setNom(updatedCours.getNom());
+                    cours.setDescription(updatedCours.getDescription());
                     return coursRepository.save(cours);
                 })
                 .orElseThrow(() -> new RuntimeException("Cours not found with id " + id));
