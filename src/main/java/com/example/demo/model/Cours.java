@@ -18,11 +18,12 @@ public class Cours {
         this.Culture =Culture;
         this.Artisanat = Artisanat;
 
-
     }
 
     public Cours() {
     }
+
+
 
     public void setSport(String sport) {
         Sport = sport;
@@ -47,4 +48,5 @@ public class Cours {
     public String getArtisanat(){
         return Artisanat;
     }
+
 }

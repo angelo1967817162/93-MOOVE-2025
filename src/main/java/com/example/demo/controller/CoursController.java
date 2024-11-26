@@ -88,10 +88,10 @@ public class CoursController {
         return this.coursRepository.findAll();
     }
 
-    @GetMapping("/{sport}")
+  /*  @GetMapping("/{sport}")
     public Cours getCoursBySport(@PathVariable String sport) {
         return coursRepository.findBySport(sport);
-    }
+    }*/
 
 //    @GetMapping("/cours/{Sport}")
 //    public Cours afficherCours(@PathVariable String Sport) {
@@ -108,7 +108,7 @@ public class CoursController {
 //    }
 
     @PutMapping("/{id}")
-    public Cours updateCours(@PathVariable Long id, @RequestBody Cours updatedCours) {
+    public Cours updateCours(@PathVariable Integer id, @RequestBody Cours updatedCours) {
         return coursRepository.findById(id)
                 .map(cours -> {
                     cours.setSport(updatedCours.getSport());
@@ -138,7 +138,7 @@ public class CoursController {
 
     @DeleteMapping("/id")
     public void supprimerCours() {
-        coursRepository.delete(id);
+        coursRepository.delete((Cours) id);
 
     }
 }
