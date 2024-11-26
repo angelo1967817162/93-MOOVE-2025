@@ -64,7 +64,6 @@ import org.springframework.web.bind.annotation.*;
 
 //import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
@@ -72,39 +71,28 @@ import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 @RestController
 @RequestMapping("/cours")
 public class CoursController {
-    @Autowired
-    private CoursRepository coursRepository;
 
+    private final CoursRepository coursRepository;
+
+    public CoursController(CoursRepository coursRepository) {
+        this.coursRepository = coursRepository;
+    }
 
     @PostMapping
     public Cours createCours(@RequestBody Cours nouveauCours) {
         return coursRepository.save(nouveauCours);
     }
 
-    @GetMapping("/cours")
+    @GetMapping
     public List<Cours> getAllCours() {
         return this.coursRepository.findAll();
     }
 
 
-//  @GetMapping("/{id}")
-//    public Optional<Cours> getId(@PathVariable Integer id) {
-//        return this.coursRepository.findById(id);
-//    }
-
-//    @GetMapping("/cours/{Sport}")
-//    public Cours afficherCours(@PathVariable String Sport) {
-////Cherchez le tatoueur ou la tatoueuse dans votre liste et retourner l’objet trouvé.
-//        //faire un foreach sur listeTatoueurs
-//        //Pour chaque Tatoueur dans chaque case, vérifiez si getId==id
-//        // si oui, retrouver le tatoueur
-//        for (Cours c : this.coursRepository.findAll()) {
-//            if (c.getSport() == c.Sport) {
-//                return c;
-//            }
-//        }
-//        return null;
-//    }
+    @GetMapping("/{id}")
+    public Cours getCours(@PathVariable Integer id) {
+        return this.coursRepository.findById(id).get();
+    }
 
     @PutMapping("/{id}")
     public Cours updateCours(@PathVariable Integer id, @RequestBody Cours updatedCours) {

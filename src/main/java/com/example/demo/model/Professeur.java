@@ -11,6 +11,8 @@ public class Professeur {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String name;
+    private String email;
+    private String password;
 
     // Constructors, getters, and setters
     public Professeur() {}

@@ -37,9 +37,10 @@ public class AdherentController {
     @PutMapping("/{id}")
     public Adherent updateAdherent(@PathVariable Integer id, @RequestBody Adherent updatedAdherent) {
         return adherentRepository.findById(id).map(adherent -> {
-            adherent.setNom(updatedAdherent.getNom());
+            adherent.setName(updatedAdherent
+                    .getName());
             adherent.setEmail(updatedAdherent.getEmail());
-            adherent.setMot_de_passe(updatedAdherent.getMot_de_passe());
+            adherent.setPassword(updatedAdherent.getPassword());
             return adherentRepository.save(adherent);
         }).orElse(null);
     }
