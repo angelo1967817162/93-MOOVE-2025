@@ -2,6 +2,8 @@ package com.example.demo.controller;
 
 import com.example.demo.model.Cours;
 import com.example.demo.model.Professeur;
+import com.example.demo.repository.ProfesseurRepository;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -15,6 +17,7 @@ public class ProfesseurController {
 
 
     @PostMapping
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public Professeur ajouterProfesseur(@RequestBody Professeur professeur) {
         listeProfesseurs.add(professeur);
         return professeur;

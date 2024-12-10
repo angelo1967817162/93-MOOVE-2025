@@ -60,6 +60,7 @@ public class CoursController {
 import com.example.demo.model.Cours;
 import com.example.demo.repository.CoursRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 //import java.util.Arrays;
@@ -79,6 +80,7 @@ public class CoursController {
     }
 
     @PostMapping
+    @PreAuthorize("hasRole('ROLE_PROF')")
     public Cours createCours(@RequestBody Cours nouveauCours) {
         return coursRepository.save(nouveauCours);
     }
@@ -95,6 +97,7 @@ public class CoursController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasRole('ROLE_PROF')")
     public Cours updateCours(@PathVariable Integer id, @RequestBody Cours updatedCours) {
         return coursRepository.findById(id)
                 .map(cours -> {
