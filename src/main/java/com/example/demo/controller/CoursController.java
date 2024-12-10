@@ -69,6 +69,7 @@ import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
 
 @RestController
+@CrossOrigin
 @RequestMapping("/cours")
 public class CoursController {
 
